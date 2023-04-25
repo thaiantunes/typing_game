@@ -1,0 +1,25 @@
+.phrase {
+    font-size: 20px;
+    text-align: left;
+}
+
+.field {
+    font-size: 20px;
+    height: 130px;
+}
+
+.field-disabled{
+    background-color: lightgray;
+}
+
+.icons{ 
+    vertical-align: middle;
+}
+
+.green-border{
+    border: 3px solid green;
+}
+
+.red-border{
+    border: 3px solid red;
+}
