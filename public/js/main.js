@@ -31,13 +31,18 @@ function startStopwatch(){
 			console.log("Left time: " + leftTime);
 			$("#time").text(leftTime);
 			if(leftTime < 1){
-				field.attr("disabled", true);
 				clearInterval(stopwatch);
-				field.toggleClass("field-disabled");
+				endGame();
 			}
 		}, 1000);
 	});
 };
+
+function endGame(){
+	field.attr("disabled", true);
+	field.toggleClass("field-disabled");
+	addScore();
+}
 
 function markers(){
 	var phrase = $(".phrase").text();
@@ -52,6 +57,33 @@ function markers(){
 			field.removeClass("green-border");
 		}
 	});
+}
+
+function addScore(){
+	var tableContent = $(".score").find("tbody");
+	var wordCount = $("#wordCounter").text();
+	var user = "Thai";
+	var row = addRow(user, wordCount);
+	row.find(".remove-button").click(removeRow);
+	tableContent.append(row);
+}
+
+function addRow(user, wordCount){
+	var row = $("<tr>");
+	var user = $("<td>").text(user);
+	var words = $("<td>").text(wordCount);
+	var remove = $("<td>");
+	var link = $("<a>").addClass("remove-button").attr("href", "#");
+	var icon = $("<i>").addClass("small").addClass("material-icons").text("delete")
+	row.append(user);
+	row.append(words);
+	row.append(remove.append((link.append(icon))));
+	return row;
+}
+
+function removeRow(){
+	event.preventDefault();
+	$(this).parent().parent().remove();
 }
 
 function restartGame(){
