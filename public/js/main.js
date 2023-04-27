@@ -4,11 +4,16 @@ var field = $(".field");
 $(function(){
 	console.log("Page loaded")
 	getPhrase();
-	startCounters();
+	startCounters();1
 	startStopwatch();
 	markers();
 	$("#restart-button").click(restartGame);
 });
+
+function getTime(time){
+	startTime = time
+	$("#time").text(time);
+}
 
 function getPhrase() {
 	var words = $(".phrase").text().split(" ").length;
@@ -24,8 +29,8 @@ function startCounters(){
 };
 
 function startStopwatch(){
-	var leftTime = $("#time").text();
 	field.one("focus", function(){
+		var leftTime = $("#time").text();
 		var stopwatch = setInterval(function(){
 			leftTime = leftTime - 1;
 			console.log("Left time: " + leftTime);
@@ -59,6 +64,10 @@ function markers(){
 	});
 }
 
+$("#score-button").click(function(){
+	$(".score").stop().slideToggle(600)
+});
+
 function addScore(){
 	var tableContent = $(".score").find("tbody");
 	var wordCount = $("#wordCounter").text();
@@ -66,6 +75,13 @@ function addScore(){
 	var row = addRow(user, wordCount);
 	row.find(".remove-button").click(removeRow);
 	tableContent.append(row);
+	$(".score").slideDown(500);
+	scrollScore();
+}
+
+function scrollScore(){
+	var scoreOffset = $(".score").offset().top;
+	$("body, html").animate({scrollTop: scoreOffset+"px"}, 1000);
 }
 
 function addRow(user, wordCount){
@@ -83,7 +99,10 @@ function addRow(user, wordCount){
 
 function removeRow(){
 	event.preventDefault();
-	$(this).parent().parent().remove();
+	$(this).parent().parent().fadeOut(600);
+	setTimeout(function(){
+		(this).parent().parent().remove();
+	},600);
 }
 
 function restartGame(){

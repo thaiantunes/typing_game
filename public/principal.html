@@ -13,13 +13,18 @@
         <h1 class="center">Alura Typer</h1>
         <p class="phrase center">Essa frase tem oito belas e grandiosas palavras.</p>
 
+        <div class="center">
+            <img src="img/spinner.gif" alt="Spinner" id="spinner">
+            <p id="error">An error has occurred. Please, try again.</p>
+        </div>
+
         <ul class="info center">
             <li>
                 <i class="small material-icons icons">description</i>
                 <span id="phraseLen">30</span> words</li>
             <li>
                 <i class="small material-icons icons">query_builder</i>
-                <span id="time">10</span> seconds</li>
+                <span id="time">3</span> seconds</li>
         </ul>
 
         <textarea class="field" rows="8" cols="40"></textarea>
@@ -28,6 +33,16 @@
             <a class="btn-floating btn-large waves-effect waves-light red" id="restart-button">
                 <i class="material-icons">restore</i>
             </a>
+            <a class="btn-floating btn-large waves-effect waves-light green" id="score-button">
+                <i class="material-icons">assignment</i>
+            </a>
+            <a class="btn-floating btn-large waves-effect waves-light azul" id="phrase-button">
+                <i class="material-icons">shuffle</i>
+            </a>
+            <a class="btn-floating btn-large waves-effect waves-light cyan" id="choose-button">
+                <i class="material-icons">repeat_one</i>
+            </a>
+            <input type="number" min="0" id="phrase-id">
         </div>
 
         <ul class="center">
@@ -46,11 +61,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>User</td>
-                        <td>999</td>
-                        <td class="remove-button"><a href='#'><i class='small material-icons'>delete</i></a></td>
-                    </tr>
                 </tbody>
             </table>
         </section>
@@ -58,6 +68,7 @@
     </div>
     <script src="js/jquery.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/phrase.js"></script>
 </body>
 </html>
 

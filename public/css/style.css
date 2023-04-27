@@ -23,3 +23,24 @@
 .red-border{
     border: 3px solid red;
 }
+
+.score{
+    display: none;
+}
+
+.body{
+    overflow: scroll;
+}
+
+#error {
+    color: red;
+    display: none;
+}
+
+#spinner {
+    display: none;
+}
+
+#phrase-id {
+    width: 50px
+}
